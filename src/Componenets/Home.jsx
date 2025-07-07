@@ -1,17 +1,34 @@
-// src/Pages/Home.jsx
-import React from 'react'
-import Hero1 from '../Componenets/Hero1'
-import AutoCarousel from '../Componenets/Hero2'
-import Hero3 from '../Componenets/Hero3'
+import React, { useEffect, useState } from 'react';
+import ImageModal from '../Componenets/Modal';
+import modalImage from '../assets/pictures/welcome.jpg';
+import Hero1 from './Hero1';
+import AutoCarousel from './Hero2';
+import Hero3 from './Hero3';
+
 
 function Home() {
+  const [showModal, setShowModal] = useState(true);
+
+
+
   return (
     <>
-      <Hero1 />
-      <AutoCarousel />
-      <Hero3 />
+      <ImageModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        imageUrl={modalImage}
+        
+      />
+
+   
+     
+
+        <Hero1 />
+        <AutoCarousel />
+        <Hero3 />
+      
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;
