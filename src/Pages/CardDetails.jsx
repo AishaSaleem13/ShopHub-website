@@ -1,7 +1,7 @@
 // Components/ProductDetail.jsx
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
+import { getProductById } from '../config/Api'
 
 
 function ProductDetail() {
@@ -12,15 +12,15 @@ function ProductDetail() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/${id}`)
-        setProduct(res.data)
+        const productData = await getProductById(id);
+        setProduct(productData);
       } catch (err) {
-        console.error('Error fetching product:', err)
+        console.error('Error fetching product:', err);
       }
-    }
+    };
 
-    fetchProduct()
-  }, [id])
+    fetchProduct();
+  }, [id]);
 
   if (!product) return <p className="p-4">Loading...</p>
 

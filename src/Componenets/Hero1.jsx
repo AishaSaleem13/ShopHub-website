@@ -6,9 +6,11 @@ import pic4 from '../assets/pictures/img08.jpg'
 import icon from '../assets/icons/arrow.jpg'
 import icon2 from '../assets/icons/graph.jpg'
 
+
 function Hero1() {
   return (
     <>
+    
       <div className="p-6 mt-0">
         {/* Top Images Row */}
         <div className="flex flex-wrap gap-12 justify-start ml-4  md:ml-20">

@@ -18,12 +18,12 @@ function Hero3() {
   const [products, setProducts] = useState([])
   const navigate = useNavigate()
 const dispatch = useDispatch();
-
+console.log("CATEGORY URL: ", import.meta.env.VITE_API_CATEGORY_URL);
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await getFurnitureProducts()
-        const limitedData = res.data.products.slice(0, 4)
+      const res = await getFurnitureProducts();
+const limitedData = res.products.slice(0, 4);
         setProducts(limitedData)
       } catch (err) {
         console.error('Failed to fetch products:', err)

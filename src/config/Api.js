@@ -1,10 +1,22 @@
-// config/api.js
-import axios from 'axios'
-
-export const getFurnitureProducts = () => {
-  return axios.get(import.meta.env.VITE_API_CATEGORY_URL)
+export async function getProductById(id) {
+  try {
+    const response = await fetch(`https://dummyjson.com/products/${id}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching product by ID:', error);
+    return null;
+  }
 }
 
-export const getProductById = (id) => {
-  return axios.get(`${import.meta.env.VITE_API_BASE_URL}/${id}`)
+export async function getFurnitureProducts() {
+  try {
+    const response = await fetch('https://dummyjson.com/products/category/furniture');
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching furniture products:', error);
+    return { products: [] };
+  }
 }
+
