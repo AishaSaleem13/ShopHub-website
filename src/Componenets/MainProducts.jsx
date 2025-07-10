@@ -1,4 +1,6 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { addtocart } from '../Store/cart';
 
 import pic1 from '../assets/pictures/8.jpg'
 import icon2 from '../assets/icons/graph.jpg'
@@ -18,6 +20,7 @@ function MainProducts() {
      const [products, setProducts] = useState([])
   const navigate = useNavigate()
 
+  const dispatch =useDispatch()
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -90,7 +93,10 @@ function MainProducts() {
               />
               <div className="absolute bottom-0 left-0 w-full bg-white/30 backdrop-blur-sm py-1 px-2 flex justify-between items-center
                 opacity-0 translate-y-full group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                <button className="text-sm font-medium hover:text-red-500">Add to Cart</button>
+                <button onClick={(e) => {
+                    e.stopPropagation(); // Prevent navigating when clicking Add to Cart
+                    dispatch(addtocart(product));
+                  }}  className="text-sm font-medium hover:text-red-500">Add to Cart</button>
               </div>
             </div>
 

@@ -53,7 +53,7 @@ function Navbar() {
 
             {/* Cart - right beside nav links */}
             <div className=" mr-2 flex items-center">
-              <img src={icon} alt="cart icon" className="w-8 h-8" />
+              <img src={icon} alt="cart icon" className="w-8 h-8" onClick={()=>navigate('/cart')} />
                       
               <div className="ml-1 leading-tight">
                 <a href="#" className="font-bold text-black font-mono block">Shopping Cart</a>

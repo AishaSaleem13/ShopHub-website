@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
+
 function ProductDetail() {
+
   const { id } = useParams()
   const [product, setProduct] = useState(null)
 
@@ -23,7 +25,7 @@ function ProductDetail() {
   if (!product) return <p className="p-4">Loading...</p>
 
   return (
-    <div className="p-6">
+    <div className="p-6" >
       <h1 className="text-2xl font-bold mb-2">{product.title}</h1>
       <img src={product.thumbnail} alt={product.title} className="w-64 h-64 object-cover mb-4" />
       <p className="text-gray-700">{product.description}</p>

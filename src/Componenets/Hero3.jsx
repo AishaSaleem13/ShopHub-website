@@ -8,12 +8,16 @@ import pic1 from '../assets/pictures/img22.jpg'
 import pic2 from '../assets/pictures/img23.jpg'
 import pic3 from '../assets/pictures/img24.jpg'
 import pic4 from '../assets/pictures/img22.jpg'
+import { useDispatch } from 'react-redux';
+import { addtocart } from '../Store/cart';
 
 const customImages = [pic1, pic2, pic3, pic4]
 
 function Hero3() {
+
   const [products, setProducts] = useState([])
   const navigate = useNavigate()
+const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -49,7 +53,10 @@ function Hero3() {
               {/* Hover Add to Cart */}
               <div className="absolute bottom-0 left-0 w-full bg-white/30 backdrop-blur-sm py-1 px-2 flex justify-between items-center
                 opacity-0 translate-y-full group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                <button className="text-sm font-medium hover:text-red-500">Add to Cart</button>
+                <button onClick={(e) => {
+    e.stopPropagation(); // Prevent navigating when clicking Add to Cart
+    dispatch(addtocart(product));
+  }} className="text-sm font-medium hover:text-red-500">Add to Cart</button>
               </div>
             </div>
 

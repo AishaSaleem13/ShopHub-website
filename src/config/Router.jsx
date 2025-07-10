@@ -7,6 +7,8 @@ import Contact from '../Componenets/Contact'
 import Login from '../Componenets/Login'
 import Home from '../Componenets/Home'
 import Signup from '../Componenets/Signup'
+import Cart from '../Componenets/Cart'
+
 
 
 
@@ -22,7 +24,7 @@ function RouterConfig() {
          <Home/> 
         }
       />
-
+ <Route path="/cart" element={<Cart/>} />
 
       <Route path="/product/:id" element={<ProductDetail/>} />
       <Route path="/about" element={<MainAbout/>} />
