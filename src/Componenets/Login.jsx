@@ -1,75 +1,78 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { setLogin } from '../config/Api'
+import { useNavigate } from 'react-router'
+
 
 function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, SetEmail] = useState('')
+  const [password, SetPassword] = useState('')
   const navigate = useNavigate()
 
-  const handleSubmit = async () => {
-    try {
-      // 🔐 Fake API call – replace with your own
-      const res = await fetch('https://your-api.com/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      })
-
-      if (!res.ok) throw new Error('Invalid login')
-
-      const data = await res.json()
-      localStorage.setItem('authToken', data.token)
-      navigate('/') // redirect after login
-    } catch (err) {
-      alert('Login failed: ' + err.message)
+  async function LoginValue() {
+    const res = await setLogin({email, password})
+    console.log(res)
+    if (email||password){
+      navigate('/')
     }
+
+  }
+
+  function handleEmail(e) {
+    SetEmail(e.target.value)
+  }
+
+  function handlePassword(e) {
+    SetPassword(e.target.value)
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-300 px-4">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
-        <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">Welcome Back</h2>
+    <>
+    
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+      <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md space-y-6 text-gray-800">
+        <h2 className="text-3xl font-bold text-center">Login</h2>
 
-        <div className="mb-4">
-          <label className="block text-sm text-gray-600 mb-1">Email</label>
+        <div>
+          <label htmlFor="email" className="block mb-1 font-medium">Email</label>
           <input
             type="email"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@example.com"
+            id="email"
+            placeholder="Enter your email"
+            className="w-full p-3 rounded border border-gray-300 bg-gray-50 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            onChange={handleEmail}
           />
         </div>
 
-        <div className="mb-6">
-          <label className="block text-sm text-gray-600 mb-1">Password</label>
+        <div>
+          <label htmlFor="password" className="block mb-1 font-medium">Password</label>
           <input
             type="password"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="••••••••"
+            id="password"
+            placeholder="Enter your password"
+            className="w-full p-3 rounded border border-gray-300 bg-gray-50 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            onChange={handlePassword}
           />
         </div>
 
         <button
-          onClick={handleSubmit}
-          className="w-full bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-700 transition duration-200"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white p-3 rounded font-semibold transition"
+          onClick={LoginValue}
         >
-          Login
+          Submit
         </button>
 
-        <p className="mt-4 text-sm text-center text-gray-600">
-          Don't have an account?{' '}
+        <p className="text-center text-sm mt-4 text-gray-600">
+          Don&apos;t have an account?{' '}
           <span
-            className="text-blue-600 hover:underline cursor-pointer"
             onClick={() => navigate('/signup')}
+            className="text-blue-600 hover:underline cursor-pointer font-medium"
           >
-            Sign up
+            Sign Up
           </span>
         </p>
       </div>
     </div>
+    </>
   )
 }
 

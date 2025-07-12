@@ -14,7 +14,7 @@ function MainAbout() {
     <div className="flex flex-col min-h-screen">
    
 
-      {/* 🔸 Hero Section */}
+      {/*  Hero Section */}
       <div
         className="relative h-[250px] sm:h-[300px] md:h-[350px] w-full bg-cover bg-center flex items-center justify-center px-4 sm:px-8"
         style={{ backgroundImage: `url(${pic1})` }}
@@ -41,14 +41,13 @@ function MainAbout() {
         </div>
       </div>
 
-      {/* 🔸 WHO WE ARE Heading */}
       <div className="text-start mt-16 px-6 sm:px-10 md:px-20">
         <h1 className="text-3xl sm:text-4xl font-bold font-serif text-gray-900">
           WHO WE ARE?
         </h1>
       </div>
 
-      {/* 🔸 Content Section */}
+      {/*  Content Section */}
       <div className="px-6 sm:px-10 md:px-20 py-12 bg-white text-gray-800">
         <div className="max-w-4xl mx-auto text-justify space-y-6">
           <p className="text-base sm:text-lg md:text-xl leading-relaxed">
@@ -67,7 +66,7 @@ function MainAbout() {
           </p>
         </div>
 
-        {/* 🔸 Follow Us Section */}
+        {/*  Follow Us Section */}
         <div className="pt-12">
           <h2 className="text-gray-700 text-2xl sm:text-3xl md:text-4xl tracking-wide font-bold text-start mb-6">
             Follow Us

@@ -18,7 +18,7 @@ function Hero1() {
           {/* First Image Block */}
           <div className="relative w-full md:w-[60%]">
             <img src={pic1} alt="pic1" className="w-full h-auto" />
-            <p className="absolute sm:hidden md:block md:bottom-64 left-8 md:left-16 text-white text-sm font-serif tracking-[0.2em] bg-black/10 px-4 py-1 rounded">
+            <p className="absolute hidden md:block md:bottom-64 left-8 md:left-16 text-white text-sm font-serif tracking-[0.2em] bg-black/10 px-4 py-1 rounded">
               Furniture Design ideas
             </p>
             <p className="absolute bottom-48 left-8 md:left-16 text-3xl md:text-6xl font-extrabold text-white">

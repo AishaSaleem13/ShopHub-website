@@ -17,7 +17,7 @@ import Cart from '../Componenets/Cart'
 function RouterConfig() {
   return (
     <Routes>
-      {/* Homepage */}
+      
       <Route
         path="/"
         element={

@@ -8,7 +8,7 @@ function Contact() {
     <div className="flex flex-col min-h-screen">
   
 
-      {/* 🔹 Hero Section */}
+  {/* hero section */}
       <div
         className="relative h-[260px] sm:h-[320px] bg-cover bg-center flex items-center justify-center"
         style={{ backgroundImage: `url(${pic})` }}
@@ -17,10 +17,10 @@ function Contact() {
         <h1 className="relative text-white text-3xl sm:text-4xl md:text-5xl font-bold z-10">Contact Us</h1>
       </div>
 
-      {/* 🔹 Contact Section */}
+      {/*  Contact Section */}
       <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col-reverse md:flex-row gap-12">
 
-        {/* 🔸 Left - Form */}
+        {/*  Left Form */}
         <div className="md:w-2/3">
           <h2 className="text-2xl font-bold mb-6 text-gray-800">Send us a message</h2>
           <form className="space-y-4">
@@ -55,7 +55,7 @@ function Contact() {
           </form>
         </div>
 
-        {/* 🔸 Right - Info */}
+        {/*  RightInfo */}
         <div className="md:w-1/3 space-y-6">
           <h2 className="text-2xl font-bold text-gray-800">Get in touch</h2>
           <div className="flex items-center gap-4">

@@ -10,7 +10,7 @@ function ProductCard() {
     id: 1,
     title: "Upholstered Chair",
     description: "Modern fabric seating.",
-    thumbnail: pic1, // your default image
+    thumbnail: pic1,
     price: 120
   };
   const navigate = useNavigate()

@@ -54,7 +54,7 @@ const limitedData = res.products.slice(0, 4);
               <div className="absolute bottom-0 left-0 w-full bg-white/30 backdrop-blur-sm py-1 px-2 flex justify-between items-center
                 opacity-0 translate-y-full group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                 <button onClick={(e) => {
-    e.stopPropagation(); // Prevent navigating when clicking Add to Cart
+    e.stopPropagation();
     dispatch(addtocart(product));
   }} className="text-sm font-medium hover:text-red-500">Add to Cart</button>
               </div>

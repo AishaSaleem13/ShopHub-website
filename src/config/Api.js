@@ -20,3 +20,18 @@ export async function getFurnitureProducts() {
   }
 }
 
+
+export async function setLogin({email,password}){
+    const res=await fetch('https://dashboard-flax-two.vercel.app/api/auth/login',{
+    method:'POST',
+    headers:{
+        'Content-Type':'application/json'
+    },
+    body:JSON.stringify({
+        email,
+        password
+    })
+})
+const result = await res.json()
+    return result
+}

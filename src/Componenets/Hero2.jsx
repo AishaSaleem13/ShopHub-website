@@ -29,7 +29,7 @@ function AutoCarousel() {
             <div className="relative w-full h-[180px] sm:h-[200px] md:h-[160px]">
               <img src={pic12} alt="Chair" className="w-full h-full object-cover " />
               <p className="absolute top-4 left-[65%] text-white text-lg font-bold tracking-widest">Chairs</p>
-              <p className="absolute top-10 left-[130px] md:left-[110px] text-white text-xl md:text-2xl font-bold tracking-[0.2em]">ZIO DINING</p>
+              <p className="absolute top-10 left-[130px] md:left-[110px] xlg:left-[700px] text-white text-xl md:text-2xl font-bold tracking-[0.2em]">ZIO DINING</p>
               <p className="absolute top-16 left-[180px] text-white text-xl md:text-2xl font-bold tracking-[0.2em]">CHAIR</p>
               <p className="absolute bottom-4 left-[220px] transform -translate-x-1/2 text-sm text-white hover:text-red-400">
                 SHOP NOW
@@ -71,7 +71,7 @@ function AutoCarousel() {
   </h2>
 
   {/* Subtext */}
-  <p className="text-sm sm:text-base md:text-2xl left-16 tracking-widest drop-shadow-sm">
+  <p className="text-sm sm:text-base md:text-2xl  lg:text-2xl left-16 tracking-widest drop-shadow-sm">
 Quality items
   </p>
 </div>
