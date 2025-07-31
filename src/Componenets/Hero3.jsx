@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from 'react'
-import { getFurnitureProducts } from '../config/Api.js'
-import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { addtocart } from '../Store/cart'
+import React, { useEffect, useState } from 'react';
+import { getFurnitureProducts } from '../config/Api.js';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addtocart } from '../Store/cart';
 
-import icon2 from '../assets/icons/graph.jpg'
+import icon2 from '../assets/icons/graph.jpg';
 
 function Hero3() {
-  const [products, setProducts] = useState([])
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await getFurnitureProducts()
-        const limitedData = res.products.slice(0, 4)
-        setProducts(limitedData)
+        const res = await getFurnitureProducts();
+        const limitedData = res.products.slice(0, 4);
+        setProducts(limitedData);
       } catch (err) {
-        console.error('Failed to fetch products:', err)
+        console.error('Failed to fetch products:', err);
       }
-    }
+    };
 
-    fetchProducts()
-  }, [])
+    fetchProducts();
+  }, []);
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
@@ -38,17 +38,16 @@ function Hero3() {
             {/* Image Container */}
             <div className="relative h-[140px] sm:h-[160px] md:h-[180px] overflow-hidden rounded-md">
               <img
-                src={product.thumbnail || product.image} // ✅ Use API image
+                src={product.thumbnail || product.image}
                 alt={product.title}
                 className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
               />
               {/* Hover Add to Cart */}
-              <div className="absolute bottom-0 left-0 w-full bg-white/30 backdrop-blur-sm py-1 px-2 flex justify-between items-center
-                opacity-0 translate-y-full group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+              <div className="absolute bottom-0 left-0 w-full bg-white/30 backdrop-blur-sm py-1 px-2 flex justify-between items-center opacity-0 translate-y-full group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                 <button
                   onClick={(e) => {
-                    e.stopPropagation()
-                    dispatch(addtocart(product))
+                    e.stopPropagation();
+                    dispatch(addtocart(product));
                   }}
                   className="text-sm font-medium hover:text-red-500"
                 >
@@ -68,7 +67,7 @@ function Hero3() {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
-export default Hero3
+export default Hero3;

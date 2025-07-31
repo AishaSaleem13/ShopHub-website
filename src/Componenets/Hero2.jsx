@@ -29,9 +29,9 @@ function AutoCarousel() {
             <div className="relative w-full h-[180px] sm:h-[200px] md:h-[160px]">
               <img src={pic12} alt="Chair" className="w-full h-full object-cover " />
               <p className="absolute top-4 left-[65%] text-white text-lg font-bold tracking-widest">Chairs</p>
-              <p className="absolute top-10 left-[130px] md:left-[130px] xlg:left-[700px] text-white text-xl md:text-2xl font-bold tracking-[0.2em]">ZIO DINING</p>
-              <p className="absolute top-16 left-[180px] md:left-[200px] text-white text-xl md:text-2xl font-bold tracking-[0.2em]">CHAIR</p>
-              <p className="absolute bottom-4 left-[220px]  md:left-[260px]transform -translate-x-1/2 text-sm text-white hover:text-red-400">
+              <p className="absolute top-10 left-[130px] md:left-[110px] xlg:left-[700px] text-white text-xl md:text-2xl font-bold tracking-[0.2em]">ZIO DINING</p>
+              <p className="absolute top-16 left-[180px] text-white text-xl md:text-2xl font-bold tracking-[0.2em]">CHAIR</p>
+              <p className="absolute bottom-4 left-[220px] transform -translate-x-1/2 text-sm text-white hover:text-red-400">
                 SHOP NOW
               </p>
               <img src={icon} alt="arrow" className="w-4 h-4 absolute bottom-4 left-[260px]" />
@@ -86,3 +86,4 @@ Quality items
 }
 
 export default AutoCarousel
+
