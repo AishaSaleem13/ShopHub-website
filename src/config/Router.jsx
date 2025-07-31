@@ -1,13 +1,13 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import ProductDetail from '../Pages/CardDetails'
-import MainAbout from '../Componenets/MainAbout'
-import MainProducts from '../Componenets/MainProducts'
-import Contact from '../Componenets/Contact'
-import Login from '../Componenets/Login'
-import Home from '../Componenets/Home'
-import Signup from '../Componenets/Signup'
-import Cart from '../Componenets/Cart'
+import MainAbout from '../Components/MainAbout'
+import MainProducts from '../Components/MainProducts'
+import Contact from '../Components/Contact'
+import Login from '../Components/Login'
+import Home from '../Components/Home'
+import Signup from '../Components/Signup'
+import Cart from '../Components/Cart'
 
 
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ImageModal from '../Componenets/Modal';
+import ImageModal from '../Components/Modal';
 import modalImage from '../assets/pictures/welcome.jpg';
 import Hero1 from './Hero1';
 import AutoCarousel from './Hero2';

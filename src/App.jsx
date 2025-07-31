@@ -4,9 +4,9 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
 import { store ,persistor} from './Store'
 import RouterConfig from './config/Router'
-import BrandSlider from './Componenets/BrandSlider'
-import Footr from './Componenets/Footr'
-import Navbar from './Componenets/Navbar'
+import BrandSlider from './Components/BrandSlider'
+import Footr from './Components/Footr'
+import Navbar from './Components/Navbar'
 
 function App() {
   return (
