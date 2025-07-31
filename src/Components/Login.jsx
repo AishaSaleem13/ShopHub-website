@@ -64,7 +64,7 @@ function Login() {
         <p className="text-center text-sm mt-4 text-gray-600">
           Don&apos;t have an account?{' '}
           <span
-            onClick={() => navigate('/signup')}
+      
             className="text-blue-600 hover:underline cursor-pointer font-medium"
           >
             Sign Up
