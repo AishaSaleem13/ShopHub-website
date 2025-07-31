@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { setLogin } from '../config/Api'
 import { useNavigate } from 'react-router'
 
-
+import { Link } from 'react-router-dom';
 function Login() {
   const [email, SetEmail] = useState('')
   const [password, SetPassword] = useState('')
@@ -63,12 +63,12 @@ function Login() {
 
         <p className="text-center text-sm mt-4 text-gray-600">
           Don&apos;t have an account?{' '}
-          <span
-      
-            className="text-blue-600 hover:underline cursor-pointer font-medium"
-          >
-            Sign Up
-          </span>
+        <Link
+  to="/signup"
+  className="text-blue-600 hover:underline cursor-pointer font-medium"
+>
+  Sign Up
+</Link>
         </p>
       </div>
     </div>
