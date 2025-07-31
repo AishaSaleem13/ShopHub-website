@@ -6,8 +6,9 @@ import MainProducts from '../Components/MainProducts'
 import Contact from '../Components/Contact'
 import Login from '../Components/Login'
 import Home from '../Components/Home'
-import Signup from '../Components/Signup'
+
 import Cart from '../Components/Cart'
+import Signup from '../Components/Signup'
 
 
 
