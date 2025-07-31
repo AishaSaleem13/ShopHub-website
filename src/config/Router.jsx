@@ -5,10 +5,11 @@ import MainAbout from '../Components/MainAbout'
 import MainProducts from '../Components/MainProducts'
 import Contact from '../Components/Contact'
 import Login from '../Components/Login'
+import Signup from '../Components/Signup'
+
 import Home from '../Components/Home'
 
 import Cart from '../Components/Cart'
-import Signup from '../Components/Signup'
 
 
 
