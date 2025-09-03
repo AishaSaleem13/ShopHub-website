@@ -22,7 +22,7 @@ export async function getFurnitureProducts() {
 
 
 export async function setLogin({email,password}){
-    const res=await fetch('https://dashboard-flax-two.vercel.app/api/auth/login',{
+    const res=await fetch('https://node-js-jyo8.vercel.app/user/login',{
     method:'POST',
     headers:{
         'Content-Type':'application/json'
@@ -38,9 +38,10 @@ const result = await res.json()
 
 
 
+
 export async function setSignUp({ email, password, fullname }) {
     try {
-        const res = await fetch('https://node-js-dg9t.vercel.app/login/register', {
+        const res = await fetch('https://node-js-jyo8.vercel.app/user/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

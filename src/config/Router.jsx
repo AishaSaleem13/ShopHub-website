@@ -6,8 +6,9 @@ import MainProducts from '../Componenets/MainProducts'
 import Contact from '../Componenets/Contact'
 import Login from '../Componenets/Login'
 import Home from '../Componenets/Home'
-import Signup from '../Componenets/Signup'
+
 import Cart from '../Componenets/Cart'
+import Signup from '../Componenets/SignUp'
 
 
 
@@ -31,7 +32,7 @@ function RouterConfig() {
       <Route path="/products" element={<MainProducts/>} />
       <Route path="/contact" element={<Contact/>} />
       <Route path="/login" element={<Login/>} />
-      <Route path="/signup" element={<Signup/>} />
+      <Route path ="/signup" element={<Signup/>}/>
     </Routes>
   )
 }

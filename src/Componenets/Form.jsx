@@ -23,19 +23,9 @@ function Form() {
         return
       }
 
-      // Prepare FormData for file upload
-      const formData = new FormData()
-      formData.append("title", title)
-      formData.append("brand", brand)
-      formData.append("description", description)
-      formData.append("price", price)
-      formData.append("availibility", avil)
-      if (image) {
-        formData.append("image", image)
-      }
 
       // Pass Redux token here
-      const res = await postProduct(userToken, formData)
+      const res = await postProduct(userToken,{ title,brand, price,location, description, image } )
 
       console.log(res)
       if (res) {
