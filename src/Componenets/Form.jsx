@@ -7,45 +7,47 @@ function Form() {
   const [title, setTitle] = useState("")
   const [brand, setBrand] = useState("")
   const [description, setDescription] = useState("")
-  const [image, setImage] = useState(null)
-  const [avil, setAvil] = useState("")
+  const [image, setImage] = useState()
+  const [availability, setavailability] = useState("")
   const [price, setPrice] = useState("")
 
   const navigate = useNavigate()
   const userToken = useSelector(state => state.tokenreducer.tokens) // Redux token
   console.log("Token:", userToken);
 
-  const submit = async () => {
-    try {
-      // validation
-      if (!title || !description || !brand || !price || !avil) {
-        alert('Please fill in all fields')
-        return
-      }
-
-      // Prepare FormData for file upload
-      const formData = new FormData()
-      formData.append("title", title)
-      formData.append("brand", brand)
-      formData.append("description", description)
-      formData.append("price", price)
-      formData.append("availibility", avil)
-      if (image) {
-        formData.append("image", image)
-      }
-
-      // Pass Redux token here
-      const res = await postProduct(userToken, formData)
-
-      console.log(res)
-      if (res) {
-        alert(`Product posted successfully`)
-        navigate("/")
-      }
-    } catch (error) {
-      console.log(error)
-      alert('An error occurred while posting your Ad. Please try again later.')
+ const submit = async () => {
+  try {
+    if (!title || !description || !brand || !price || !availability) {
+      alert('Please fill in all fields')
+      return
     }
+
+    // FormData banana
+    const formData = new FormData()
+    formData.append("title", title)
+    formData.append("brand", brand)
+    formData.append("description", description)
+    formData.append("price", price)
+    formData.append("availibility", availability)
+
+    if (image) {
+      formData.append("image", image)  // file bhej rahi ho
+    }
+
+    // Backend call
+    const res = await postProduct(userToken, formData)
+
+    console.log(res)
+    if (res) {
+      alert("Product posted successfully")
+      navigate("/")
+    }
+  } catch (error) {
+    console.error("Error in submit:", error)
+    alert("An error occurred while posting your Ad. Please try again later.")
+  }
+
+
   }
 
   return (
@@ -104,7 +106,7 @@ function Form() {
           <input
             type="text"
             placeholder="In Stock / Out of Stock"
-            onChange={(e) => setAvil(e.target.value)}
+            onChange={(e) => setavailability(e.target.value)}
             className="w-full h-12 px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500"
           />
         </div>

@@ -63,23 +63,23 @@ export async function setSignUp({ email, password, fullname }) {
         console.error("Error during sign-up:", error);
         throw error; // Rethrow the error for the caller to handle
     }}
-export async function postProduct(userToken, postData) {
-  const formData = new FormData();
-  formData.append("title", postData.title);
-  formData.append("price", postData.price);
-  formData.append("description", postData.description);
-  formData.append("availibility", postData.availibility);
-  formData.append("brand", postData.brand);
-  formData.append("image", postData.image); // file object directly
+export const postProduct = async (token, formData) => {
+  try {
+    const res = await fetch("https://shophubwebsite-node.vercel.app/products/post", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`, // file bhejne ke liye Content-Type na lagao!
+      },
+      body: formData,
+    })
 
-  const response = await fetch("https://node-js-dg9t.vercel.app/products/product", {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${userToken}`, // agar auth required hai
-    },
-    body: formData
-  });
+    if (!res.ok) {
+      throw new Error(`Server error: ${res.status}`)
+    }
 
-  const result = await response.json();
-  return result;
+    return await res.json()
+  } catch (error) {
+    console.error("Error in postProduct:", error)
+    throw error
+  }
 }
