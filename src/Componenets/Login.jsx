@@ -1,81 +1,67 @@
-import React, { useState } from 'react'
-import { setLogin } from '../config/Api'
-import { useNavigate } from 'react-router'
-import { useDispatch } from 'react-redux'
 
-function Login() {
-  const [email, SetEmail] = useState('')
-  const [password, SetPassword] = useState('')
-  const navigate = useNavigate()
-  const dispatch =useDispatch()
+import {useNavigate} from 'react-router-dom'
+import { setLogin } from "../config/Api"
+import { useState } from 'react'
+import {useDispatch} from 'react-redux'
 
-  async function LoginValue() {
-    const res = await setLogin({email, password})
+import { setToken } from "../Store/usertoken"
+
+function Login(){
+    const navigate=useNavigate()
+    const dispatch=useDispatch()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+const checkLogIn=async()=>{
+try{
+    const res=await setLogin({email,password})
     console.log(res)
-    if (email||password){
-      navigate('/'),
-dispatch(settoken(res.token))
+    if(!email||!password){
+        alert('Enter All Values')
+        return
     }
-
-  }
-
-  function handleEmail(e) {
-    SetEmail(e.target.value)
-  }
-
-  function handlePassword(e) {
-    SetPassword(e.target.value)
-  }
-
-  return (
-    <>
-    
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-      <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md space-y-6 text-gray-800">
-        <h2 className="text-3xl font-bold text-center">Login</h2>
-
-        <div>
-          <label htmlFor="email" className="block mb-1 font-medium">Email</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter your email"
-            className="w-full p-3 rounded border border-gray-300 bg-gray-50 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            onChange={handleEmail}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="password" className="block mb-1 font-medium">Password</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter your password"
-            className="w-full p-3 rounded border border-gray-300 bg-gray-50 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            onChange={handlePassword}
-          />
-        </div>
-
-        <button
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white p-3 rounded font-semibold transition"
-          onClick={LoginValue}
-        >
-          Submit
-        </button>
-
-        <p className="text-center text-sm mt-4 text-gray-600">
-          Don&apos;t have an account?{' '}
-          <span
-            onClick={() => navigate('/signup')}
-            className="text-blue-600 hover:underline cursor-pointer font-medium"
-          >
-            Sign Up
-          </span>
-        </p>
-      </div>
-    </div>
-    </>
-  )
+    if (res) {
+        dispatch(updateUser(email))
+        dispatch(setToken(res.token));
+        if(res.message !== 'Logged in Successgully'){
+            alert(res.message)
+            navigate('/');
+            return
+        }
+        alert('Logged in Successgully')
+        
+    } else {
+        alert('Invalid . Please login again.');
+    }
+}
+    catch(e){
+    alert(e.mesage)
+    } 
+}
+const handleUserInput = (e) => {
+    setEmail(e.target.value)
 }
 
+const handlePasswordInput = (e) => {
+    setPassword(e.target.value)
+}
+
+    return <div>
+        <div className="container1 container">
+            <img src='https://olx1-2be1d.web.app/src/signup/sign.svg'/>
+        <h3>Welcome to OLX</h3>
+        <h6>The trusted community of buyers <br/> and sellers.</h6>
+        <input size={30} placeholder='Enter Your Email' className='logInput' type='email' onChange={handleUserInput}/>
+        <br/>
+        <input size={30} placeholder='Enter Your Password' className='logInput' type='password' onChange={handlePasswordInput}/>
+        <p style={{cursor:'pointer'}}  onClick={()=>navigate('/forgetpassword')}>Forget Password</p>
+        <button className="btn" onClick={checkLogIn}>Login</button>
+        <br/>
+        <p>By continuing, you are accepting <br/>
+            <span >OLX Terms of use</span> and <span style={{color:'skyblue'}}>Privacy Policy</span>
+        </p>
+        <p>You already have an account  <label onClick={()=>navigate('/signup')} style={{color:'rgb(232, 104, 170)',fontSize:'1.1rem',cursor:'pointer'}}> Sign up</label></p>
+    </div>
+    </div>
+}
 export default Login

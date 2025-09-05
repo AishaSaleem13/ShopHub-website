@@ -15,11 +15,34 @@ function Form() {
   const userToken = useSelector(state => state.tokenreducer.tokens) // Redux token
   console.log("Token:", userToken);
 
+<<<<<<< HEAD
  const submit = async () => {
   try {
     if (!title || !description || !brand || !price || !availability) {
       alert('Please fill in all fields')
       return
+=======
+  const submit = async () => {
+    try {
+      // validation
+      if (!title || !description || !brand || !price || !avil) {
+        alert('Please fill in all fields')
+        return
+      }
+
+
+      // Pass Redux token here
+      const res = await postProduct(userToken,{ title,brand, price,location, description, image } )
+
+      console.log(res)
+      if (res) {
+        alert(`Product posted successfully`)
+        navigate("/")
+      }
+    } catch (error) {
+      console.log(error)
+      alert('An error occurred while posting your Ad. Please try again later.')
+>>>>>>> d4d7f671b3db4d40a42637ca12473e8098ec0e3a
     }
 
     // FormData banana

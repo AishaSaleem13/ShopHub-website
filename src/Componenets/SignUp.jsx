@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { setSignUp } from '../config/Api';
-
 function Signup() {
+
+  const [email,setemail]=useState("")
+  
+  const [password,SetPassword]=useState("")
+  
+  const [name,setname]=useState("")
+
+  function handleEmail(e) {
+    setemail(e.target.value)
+  }
+  function handlename(e) {
+    setname(e.target.value)
+  }
+function handlePassword(e) {
+    SetPassword(e.target.value)
+  }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-white to-blue-200 px-4">
       <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-2xl border border-gray-200">
@@ -14,6 +29,7 @@ function Signup() {
             <input
               type="text"
               placeholder='Enter your Name'
+              onChange={handlename}
               className="input border-solid-black input-bordered w-full"
             />
           </div>
@@ -22,6 +38,7 @@ function Signup() {
             <input
               type="email"
          placeholder='Enter your email'
+         onChange={handleEmail}
               className="input border-solid-black input-bordered w-full"
             />
           </div>
@@ -30,6 +47,7 @@ function Signup() {
             <input
               type="password"
          placeholder='*********'
+         onChange={handlePassword}
               className="input  border-solid-black input-bordered w-full"
             />
           </div>
