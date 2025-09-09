@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux'
 import {CartSlice} from './cart'
-import { usrtoken } from './usertoken'
+import userToken from './usertoken'
+
 
 
 const RootReducers =combineReducers({
     ReducerOne:CartSlice.reducer,
-       tokenreducer:usrtoken.reducer
+       tokenreducer:userToken.reducer
 })
 export default RootReducers

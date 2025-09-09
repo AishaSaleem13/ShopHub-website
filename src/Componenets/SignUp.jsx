@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { setSignUp } from '../config/Api';
+import { useNavigate } from 'react-router-dom';
 function Signup() {
 
+  const navigate = useNavigate()
   const [email,setemail]=useState("")
   
   const [password,SetPassword]=useState("")
   
-  const [name,setname]=useState("")
+  const [fullname,setname]=useState("")
 
   function handleEmail(e) {
     setemail(e.target.value)
@@ -17,6 +19,31 @@ function Signup() {
 function handlePassword(e) {
     SetPassword(e.target.value)
   }
+
+
+     
+  
+const checkSignup = async (e) => {
+  e.preventDefault(); // ✅ stop form reload
+
+  try {
+    console.log("Sending signup data:", { email, password, fullname });
+
+    const res = await setSignUp({ email, password, fullname });
+
+    if (res.message) {
+      alert(res.message);
+      navigate("/");
+    }
+  } catch (err) {
+    console.error("Signup error:", err);
+    alert("Signup failed: " + err.message);
+  }
+};
+
+
+
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-white to-blue-200 px-4">
       <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-2xl border border-gray-200">
@@ -53,6 +80,7 @@ function handlePassword(e) {
           </div>
           <button
             type="submit"
+            onClick={checkSignup}
             className="btn bg-gradient-to-r from-blue-500 to-indigo-600 text-white w-full hover:opacity-90 transition-all duration-200"
           >
             Create Account

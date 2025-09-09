@@ -22,7 +22,8 @@ export async function getFurnitureProducts() {
 
 
 export async function setLogin({email,password}){
-    const res=await fetch('https://node-js-jyo8.vercel.app/user/login',{
+  try{
+    const res=await fetch('https://backend-indol-one-96.vercel.app/user/login',{
     method:'POST',
     headers:{
         'Content-Type':'application/json'
@@ -32,16 +33,25 @@ export async function setLogin({email,password}){
         password
     })
 })
-const result = await res.json()
-    return result
-}
+  if (!res.ok) {
+            throw new Error(`Failed to login up: ${res.statusText}`);
+        }
+
+        const result = await res.json();
+        return result;
+    } catch (error) {
+        // Handle any errors, you can log them or throw them further
+        console.error("Error during login-up:", error);
+        throw error; // Rethrow the error for the caller to handle
+    }
+  }
 
 
 
 
 export async function setSignUp({ email, password, fullname }) {
     try {
-        const res = await fetch('https://node-js-jyo8.vercel.app/user/register', {
+        const res = await fetch('https://shophubwebsite-node.vercel.app/user/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -66,21 +76,22 @@ export async function setSignUp({ email, password, fullname }) {
     }}
 export const postProduct = async (token, formData) => {
   try {
-    const res = await fetch("https://shophubwebsite-node.vercel.app/products/post", {
+    const res = await fetch("https://node-js-nhgy.vercel.app/products/post", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`, // file bhejne ke liye Content-Type na lagao!
+        Authorization: `Bearer ${token}`, // ✅ token here
       },
-      body: formData,
-    })
+      body: formData, // ✅ FormData includes image
+    });
 
     if (!res.ok) {
-      throw new Error(`Server error: ${res.status}`)
+      throw new Error(`Server error: ${res.status}`);
     }
 
-    return await res.json()
+    return await res.json();
   } catch (error) {
-    console.error("Error in postProduct:", error)
-    throw error
+    console.error("Error in postProduct:", error);
+    throw error;
   }
-}
+};
+

@@ -17,58 +17,36 @@ function Form() {
 
 
 
-  const submit = async () => {
-    try {
-      // validation
-      if (!title || !description || !brand || !price || !avil) {
-        alert('Please fill in all fields')
-        return
-      }
-
-
-      // Pass Redux token here
-      const res = await postProduct(userToken,{ title,brand, price,location, description, image } )
-
-      console.log(res)
-      if (res) {
-        alert(`Product posted successfully`)
-        navigate("/")
-      }
-    } catch (error) {
-      console.log(error)
-      alert('An error occurred while posting your Ad. Please try again later.')
+const submit = async () => {
+  try {
+    if (!title || !description || !brand || !price || !availability) {
+      alert("Please fill in all fields");
+      return;
     }
 
-    // FormData banana
-    const formData = new FormData()
-    formData.append("title", title)
-    formData.append("brand", brand)
-    formData.append("description", description)
-    formData.append("price", price)
-    formData.append("availibility", availability)
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("brand", brand);
+    formData.append("description", description);
+    formData.append("price", price);
+    formData.append("availability", availability);
 
     if (image) {
-      formData.append("image", image)  // file bhej rahi ho
+      formData.append("image", image);
     }
 
-    // Backend call
-    const res = await postProduct(userToken, formData)
+    const res = await postProduct(userToken, formData);
 
-    console.log(res)
-    try{   if (res) {
-      alert("Product posted successfully")
-      navigate("/")
+    if (res) {
+      alert("Product posted successfully");
+      navigate("/");
     }
+  } catch (error) {
+    console.error("Error in submit:", error);
+    alert("An error occurred. Please try again later.");
   }
-  catch(error){
-    console.error("Error in submit:", error)
-    alert("An error occurred while posting your Ad. Please try again later.")
-  }
-    
-  
+};
 
-
-  }
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-2xl shadow-lg">

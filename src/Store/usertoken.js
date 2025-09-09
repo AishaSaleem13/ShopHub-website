@@ -1,22 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const usrtoken = createSlice({
-  name: 'token',
-  initialState: {
-     tokens: {}
-  },
-  reducers: {
-    settoken: (state, action) => {
-      state.tokens = action.payload;
+const userToken = createSlice({
+    name: "token",
+    initialState: {
+        tokens: ""
     },
-    removetoken: (state) => {
-      state.tokens = {};
+    reducers: {
+        setToken: (state, action) => {
+            state.tokens = action.payload;
+        },
+        removeToken: (state) => {
+            state.tokens = {};
+        }
     }
-  }
 });
 
-// Export actions
-export const { settoken, removetoken } = usrtoken.actions;
-
-// Export reducer
-export default usrtoken.reducer;
+// Correct export
+export const { setToken, removeToken } = userToken.actions;
+export default userToken;   // <-- sirf reducer export karna hai

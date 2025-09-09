@@ -3,8 +3,7 @@ import {useNavigate} from 'react-router-dom'
 import { setLogin } from "../config/Api"
 import { useState } from 'react'
 import {useDispatch} from 'react-redux'
-
-
+import {setToken} from "../Store/usertoken"
 
 function Login(){
     const navigate=useNavigate()
@@ -20,24 +19,20 @@ try{
         alert('Enter All Values')
         return
     }
-    if (res) {
-        dispatch(updateUser(email))
-        dispatch(setToken(res.token));
-        if(res.message !== 'Logged in Successgully'){
-            alert(res.message)
-            navigate('/');
-            return
-        }
-        alert('Logged in Successgully')
+   
+    if (res.message) {
         
-    } else {
-        alert('Invalid . Please login again.');
+      alert(res.message);
+      dispatch(setToken(res.token))
+      navigate("/");
     }
-}
-    catch(e){
-    alert(e.mesage)
-    } 
-}
+  } catch (err) {
+    console.error("login error:", err);
+    alert("login failed: " + err.message);
+  }
+};
+
+
 const handleUserInput = (e) => {
     setEmail(e.target.value)
 }
