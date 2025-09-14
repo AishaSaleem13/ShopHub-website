@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export async function getProductById(id) {
   try {
     const response = await fetch(`https://dummyjson.com/products/${id}`);
@@ -23,7 +25,7 @@ export async function getFurnitureProducts() {
 
 export async function setLogin({email,password}){
   try{
-    const res=await fetch('https://backend-indol-one-96.vercel.app/user/login',{
+    const res=await fetch('http://localhost:5000/user/login',{
     method:'POST',
     headers:{
         'Content-Type':'application/json'
@@ -51,7 +53,7 @@ export async function setLogin({email,password}){
 
 export async function setSignUp({ email, password, fullname }) {
     try {
-        const res = await fetch('https://shophubwebsite-node.vercel.app/user/register', {
+        const res = await fetch('http://localhost:5000/user/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -74,24 +76,22 @@ export async function setSignUp({ email, password, fullname }) {
         console.error("Error during sign-up:", error);
         throw error; // Rethrow the error for the caller to handle
     }}
-export const postProduct = async (token, formData) => {
+
+
+
+export const postProduct = async ( formData) => {
   try {
-    const res = await fetch("https://node-js-nhgy.vercel.app/products/post", {
-      method: "POST",
+    const res = await axios.post("http://localhost:5000/products/post", formData, {
       headers: {
-        Authorization: `Bearer ${token}`, // ✅ token here
+        "Content-Type": "multipart/form-data",
+        // "Authorization": `Bearer ${token}` // abhi hata diya hai to issue nahi
       },
-      body: formData, // ✅ FormData includes image
     });
 
-    if (!res.ok) {
-      throw new Error(`Server error: ${res.status}`);
-    }
-
-    return await res.json();
-  } catch (error) {
-    console.error("Error in postProduct:", error);
-    throw error;
+    return res.data;
+  } catch (err) {
+    console.error("API Error:", err.response?.data || err.message);
+    throw err;
   }
 };
 
