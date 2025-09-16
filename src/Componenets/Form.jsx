@@ -7,8 +7,9 @@ function ProductForm() {
     title: "",
     description: "",
     price: "",
-    category: "",
+    availability: "",
     image: null,
+    brand:""
   });
    const userToken = useSelector(state=>state.tokenreducer.tokens)
      console.log("Token:", userToken);
@@ -32,7 +33,7 @@ function ProductForm() {
     formData.append("price", form.price);
     formData.append("availability", form.availability);
     formData.append("image", form.image);
-        formData.append("brand", form.brand);
+    formData.append("brand", form.brand);
 
     const result = await postProduct(userToken,formData); // ✅ use API function
    
