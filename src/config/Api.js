@@ -78,20 +78,20 @@ export async function setSignUp({ email, password, fullname }) {
     }}
 
 
-
-export const postProduct = async ( formData) => {
+// api.js
+export const postProduct = async ( userToken,formData) => {
   try {
-    const res = await axios.post("http://localhost:5000/products/post", formData, {
+    const res = await fetch("http://localhost:5000/products/post", {
+      method: "POST",
+      body: formData,
       headers: {
-        "Content-Type": "multipart/form-data",
-        // "Authorization": `Bearer ${token}` // abhi hata diya hai to issue nahi
+        Authorization: `Bearer ${userToken}`, // 👈 use Redux token
       },
     });
 
-    return res.data;
+    return await res.json();
   } catch (err) {
-    console.error("API Error:", err.response?.data || err.message);
+    console.error("❌ API error:", err);
     throw err;
   }
 };
-
