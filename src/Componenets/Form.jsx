@@ -52,6 +52,7 @@ function ProductForm() {
       <input type="text" name="title" placeholder="Title" onChange={handleChange} />
       <textarea name="description" placeholder="Description" onChange={handleChange} />
       <input type="number" name="price" placeholder="Price" onChange={handleChange} />
+       <input type="text" name="brand" placeholder="brand" onChange={handleChange} />
       <input type="text" name="availability" placeholder="availability" onChange={handleChange} />
       <input type="file" name="image" accept="image/*" onChange={handleChange} />
       <button type="submit" className="bg-blue-500 text-white p-2">Upload</button>
