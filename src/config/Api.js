@@ -25,7 +25,7 @@ export async function getFurnitureProducts() {
 
 export async function setLogin({email,password}){
   try{
-    const res=await fetch('https://node-js-2ngu.vercel.app/user/login',{
+    const res=await fetch('http://localhost:5000/user/login',{
     method:'POST',
     headers:{
         'Content-Type':'application/json'
@@ -53,7 +53,7 @@ export async function setLogin({email,password}){
 
 export async function setSignUp({ email, password, fullname }) {
     try {
-        const res = await fetch('https://node-js-2ngu.vercel.app/user/register', {
+        const res = await fetch('http://localhost:5000/user/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -79,14 +79,12 @@ export async function setSignUp({ email, password, fullname }) {
 
 
 // api.js
-export const postProduct = async ( userToken,formData) => {
+export const postProduct = async (formData) => {
   try {
-    const res = await fetch("https://node-js-2ngu.vercel.app/products/post", {
+    const res = await fetch("http://localhost:5000/products/post", {
       method: "POST",
-      body: formData,
-      headers: {
-        Authorization: `Bearer ${userToken}`, // 👈 use Redux token
-      },
+      body: formData
+      // ⚠️ abhi koi headers ki zarurat nahi hai
     });
 
     return await res.json();
@@ -95,3 +93,4 @@ export const postProduct = async ( userToken,formData) => {
     throw err;
   }
 };
+

@@ -11,8 +11,8 @@ function ProductForm() {
     image: null,
     brand:""
   });
-   const userToken = useSelector(state=>state.tokenreducer.tokens)
-     console.log("Token:", userToken);
+  //  const userToken = useSelector(state=>state.tokenreducer.tokens)
+    //  console.log("Token:", userToken);
     
  const navigate = useNavigate()
   const handleChange = (e) => {
@@ -35,10 +35,10 @@ function ProductForm() {
     formData.append("image", form.image);
     formData.append("brand", form.brand);
 
-    const result = await postProduct(userToken,formData); // ✅ use API function
+    const result = await postProduct(formData); // ✅ use API function
    
     console.log("Product added:", result);
-      console.log(userToken)
+      // console.log(userToken)
       navigate("/");
 
     if (result.message === "✅ Product added") {
