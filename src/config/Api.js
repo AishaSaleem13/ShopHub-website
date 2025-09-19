@@ -25,7 +25,7 @@ export async function getFurnitureProducts() {
 
 export async function setLogin({email,password}){
   try{
-    const res=await fetch('http://localhost:5000/user/login',{
+    const res=await fetch('https://node-js-2ngu.vercel.app/user/login',{
     method:'POST',
     headers:{
         'Content-Type':'application/json'
@@ -53,7 +53,7 @@ export async function setLogin({email,password}){
 
 export async function setSignUp({ email, password, fullname }) {
     try {
-        const res = await fetch('http://localhost:5000/user/register', {
+        const res = await fetch('https://node-js-2ngu.vercel.app/user/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -79,18 +79,30 @@ export async function setSignUp({ email, password, fullname }) {
 
 
 // api.js
-export const postProduct = async (formData) => {
+export const postProduct = async (formData, userToken) => {
   try {
-    const res = await fetch("http://localhost:5000/products/post", {
+    const res = await fetch("https://node-js-2ngu.vercel.app/products/post", {
       method: "POST",
+      headers: {
+        Authorization: `Bearer${userToken}` // space is important
+      },
       body: formData
-      // ⚠️ abhi koi headers ki zarurat nahi hai
     });
 
-    return await res.json();
+    const text = await res.text(); // read body as text first
+    let data;
+
+    try {
+      data = JSON.parse(text); // try parsing JSON
+    } catch (e) {
+      console.error("Failed to parse JSON:", e);
+      console.log("Server returned:", text);
+      throw e;
+    }
+
+    return data;
   } catch (err) {
     console.error("❌ API error:", err);
     throw err;
   }
 };
-
